@@ -1,2 +1,25 @@
 """Travelling Expense"""
-Whyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
+def distance(provinces):
+    """Str -> provinces program finds distance from Bangkok to  provinces."""
+    lis_provinces ={"Chiangrai":838, "Chiangmai":706, "Nan":675, "Phayao":706, "Phrae":557, \
+                    "Maehongson":936, "Lampang":613, "Lamphun":674, "Uttaradit":493, "Kalasin":543, \
+                    "Khonkaen":475, "Chaiyaphum":359, "Nakhonphanom":761, "Nakhonratchasima":283, \
+                    "BuengKan":751, "Buriram":410, "Mahasarakham":497, "Mukdahan":703, "Yasothon":555, \
+                    "Roiet":533, "Loei":558, "Sisaket":561, "Sakonnakhon":671, "Surin":457, \
+                    "Nongkhai":654, "Nongbualamphu":554, "Amnatcharoen":617, "Udonthani":601, \
+                    "Ubonratchathani":627, "Kamphaengphet":374, "Chainat":204, "Nakhonnayok":107, \
+                    "Nakhonpathom":57, "Samutsakhon":38, "Singburi":149, "Suphanburi":129, \
+                    "Saraburi":116, "Angthong":114, "Nakhonsawan":248, "Nonthaburi":30, "Pathumthani":42, \
+                    "Phranakhonsiayutthaya":78, "Sukhothai":427, "Uthaithani":222, "Phichit":349, \
+                    "Phitsanulok":379, "Phetchabun":375, "Lopburi":180, "Samutprakan":26, "Samutsongkhram":38, \
+                    "Chanthaburi":254, "Chachoengsao":85, "Chonburi":100, "Trat":322, "Prachinburi":136, \
+                    "Rayong":187, "Sakaeo":210, "Kanchanaburi":121, "Tak":426, "Prachuapkhirikhan":284, \
+                    "Phetchaburi":127, "Ratchaburi":102, "Krabi":801, "Chumphon":456, "Trang":852, \
+                    "Nakhonsithammarat":799, "Narathiwat":1135, "Pattani":1046, "Phangnga":802, \
+                    "Phatthalung":868, "Phuket":908, "Yala":1100, "Ranong":572, "Songkhla":984, \
+                    "Satun":981, "Suratthani":637}
+    for i in lis_provinces:
+        if provinces == i:
+            print lis_provinces[i]
+distance(raw_input())
+
