@@ -1,4 +1,62 @@
 """Travelling Expense"""
+"""Travelling Expense"""
+from tkinter import *
+import tkinter.messagebox
+
+
+class Window(object):
+    
+    def __init__(expense):
+        expense.root = Tk()
+        expense.root.title("Travelling Expense")
+        expense.root.geometry("360x240")
+        expense.label = Label(expense.root, text = "▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀",fg="#00CCCC" \
+                              ,font=("Helvetica", 13)).pack(anchor=CENTER)
+        
+        expense.label = Label(expense.root, text = ":.｡.✿ﾟ|͇̿T͇̿|ravelling |͇̿E͇̿|xpense✿.｡.:"\
+                              , fg="#FF6666", font=("Helvetica", 18)).pack(anchor=CENTER)
+        expense.label = Label(expense.root, text = "         ", font=("Helvetica", 30)).pack(anchor=CENTER)
+        expense.label = Label(expense.root, text = '''|----------------------------|''',fg="#8B4513" \
+                              ,font=("Helvetica", 13)).pack()
+        expense.label = Label(expense.root, text = '''............|.....LET ~ > "GO!!" .....|||"|""____''',fg="#8B4513" \
+                              ,font=("Helvetica", 13)).pack()
+        expense.label = Label(expense.root, text = '''...........|__________________ |||_|___|)''',fg="#8B4513" \
+                              ,font=("Helvetica", 13)).pack()
+        expense.label = Label(expense.root, text = '''...........!(@)"(@)""""**!(@)(@)***!(@)""''',fg="#110000" \
+                              ,font=("Helvetica", 13)).pack()
+        
+        expense.buttontext = IntVar()
+        expense.buttontext.set("Let Go!!")
+        Button(expense.root, fg="red", textvariable=expense.buttontext, command=expense.data1)\
+                           .place(relx=0.5, rely=0.4, anchor=CENTER)
+        expense.label = Label(expense.root, text = "▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀",fg="#00CCCC" \
+                              ,font=("Helvetica", 13)).pack(anchor=CENTER)
+
+    def data1(datastep1):
+        
+        datastep1.root = Tk()
+        datastep1.root.geometry("500x500")
+        datastep1.root.title('Travelling Expense')
+        datastep1.label = Label(datastep1.root, text = "▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀",fg="#00CCCC" \
+                              ,font=("Helvetica", 13)).pack(anchor=CENTER)
+        datastep1.buttontext = IntVar()
+        datastep1.buttontext.set("OK")
+        Button(datastep1.root, fg="red", textvariable=datastep1.buttontext, command=datastep1.data2)\
+                           .place(relx=0.5, rely=0.7, anchor=CENTER)
+        datastep1.label = Label(datastep1.root, text = "▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀",fg="#00CCCC" \
+                              ,font=("Helvetica", 13)).pack(anchor=CENTER)
+
+    def data2(datastep2):
+        datastep2.root = Tk()
+        datastep2.root.geometry("500x500")
+        datastep2.root.title('Travelling Expense')
+    
+
+
+Window()
+
+
+
 def distance(provinces):
     """Str -> provinces program finds distance from Bangkok to  provinces."""
     lis_provinces ={"Chiangrai":838, "Chiangmai":706, "Nan":675, "Phayao":706, "Phrae":557, \
