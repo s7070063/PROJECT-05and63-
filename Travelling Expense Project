@@ -1,5 +1,4 @@
 """Travelling Expense"""
-"""Travelling Expense"""
 from tkinter import *
 import tkinter.messagebox
 
