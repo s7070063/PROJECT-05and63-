@@ -2,16 +2,18 @@
 from tkinter import *
 import tkinter.messagebox
 
-
 class Window(object):
     
     def __init__(expense):
+        """Window1"""
         expense.root = Tk()
+        menubar = Menu(expense.root)
         expense.root.title("Travelling Expense")
         expense.root.geometry("360x240")
+        
+        """Label Window1"""
         expense.label = Label(expense.root, text = "▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀",fg="#00CCCC" \
                               ,font=("Helvetica", 13)).pack(anchor=CENTER)
-        
         expense.label = Label(expense.root, text = ":.｡.✿ﾟ|͇̿T͇̿|ravelling |͇̿E͇̿|xpense✿.｡.:"\
                               , fg="#FF6666", font=("Helvetica", 18)).pack(anchor=CENTER)
         expense.label = Label(expense.root, text = "         ", font=("Helvetica", 30)).pack(anchor=CENTER)
@@ -23,60 +25,127 @@ class Window(object):
                               ,font=("Helvetica", 13)).pack()
         expense.label = Label(expense.root, text = '''...........!(@)"(@)""""**!(@)(@)***!(@)""''',fg="#110000" \
                               ,font=("Helvetica", 13)).pack()
-        
+        """Button Window1"""
         expense.buttontext = IntVar()
         expense.buttontext.set("Let Go!!")
-        Button(expense.root, fg="red", textvariable=expense.buttontext, command=expense.data1)\
-                           .place(relx=0.5, rely=0.4, anchor=CENTER)
+        Button(expense.root, font=("Helvetica", 12), fg="red", bg="black", textvariable=expense.buttontext, \
+               command=expense.data1).place(relx=0.5, rely=0.4, anchor=CENTER)
         expense.label = Label(expense.root, text = "▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀",fg="#00CCCC" \
                               ,font=("Helvetica", 13)).pack(anchor=CENTER)
+        """Menu"""
 
-    def data1(datastep1):
+        def close():
+            if tkinter.messagebox.askokcancel("Quit", "Do you really wish to quit?"):
+                expense.root.destroy()
+        def instruc():
+            """Window2"""
+            root = Tk()
+            root.geometry("400x130")
+            root.title('Instruction')
+            label = Label(root, text = ":.｡.✿Instruction✿.｡.:"\
+                              , fg="#663366", font=("Helvetica", 15)).pack(anchor=CENTER)
+            label = Label(root, text = "1. Select the region to travel."\
+                              , fg="#110000", font=("Helvetica", 11)).pack(anchor=CENTER)
+            label = Label(root, text = "2. Select the type of vehicle."\
+                              , fg="#110000", font=("Helvetica", 11)).pack(anchor=CENTER)
+            label = Label(root, text = "3. Alternative fuel to travel."\
+                              , fg="#110000", font=("Helvetica", 11)).pack(anchor=CENTER)
+            label = Label(root, text = "The program calculates the distance , fuel, energy, and cost."\
+                              , fg="#110000", font=("Helvetica", 11)).pack(anchor=CENTER)
+
+        def about():
+            """Window2"""
+            root = Tk()
+            root.geometry("300x200")
+            root.title('About')
+            label = Label(root, text = ":.｡.✿About✿.｡.:"\
+                              , fg="#FF3333", font=("Helvetica", 15)).pack(anchor=CENTER)
+            label = Label(root, text = "The program calculates the distance, fuel, energy, and cost."\
+                              , fg="#110000", font=("Helvetica", 11)).pack(anchor=CENTER)
+            label = Label(root, text = ""\
+                              , fg="#110000", font=("Helvetica", 11)).pack(anchor=CENTER)
+            label = Label(root, text = ""\
+                              , fg="#110000", font=("Helvetica", 11)).pack(anchor=CENTER)
+            label = Label(root, text = "Kingkran Parod 57070005 and Bencharat Rotkotn 57070063"\
+                              , fg="#110000", font=("Helvetica", 11)).pack(anchor=CENTER)
+
+      
+
+      
+        filemenu = Menu(menubar, tearoff=0)
+        filemenu.add_command(label="Exit",command=close)
+        menubar.add_cascade(label="File",menu=filemenu)
         
-        datastep1.root = Tk()
-        datastep1.root.geometry("500x500")
-        datastep1.root.title('Travelling Expense')
-        datastep1.label = Label(datastep1.root, text = "▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀",fg="#00CCCC" \
-                              ,font=("Helvetica", 13)).pack(anchor=CENTER)
-        datastep1.buttontext = IntVar()
-        datastep1.buttontext.set("OK")
-        Button(datastep1.root, fg="red", textvariable=datastep1.buttontext, command=datastep1.data2)\
-                           .place(relx=0.5, rely=0.7, anchor=CENTER)
-        datastep1.label = Label(datastep1.root, text = "▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀",fg="#00CCCC" \
-                              ,font=("Helvetica", 13)).pack(anchor=CENTER)
+        helpmenu = Menu(menubar, tearoff=0)
+        helpmenu.add_command(label="Instruction",command=instruc)
+        helpmenu.add_command(label="About",command=about)
+        menubar.add_cascade(label="Help", menu=helpmenu)
 
-    def data2(datastep2):
-        datastep2.root = Tk()
-        datastep2.root.geometry("500x500")
-        datastep2.root.title('Travelling Expense')
+        # display the menu
+        expense.root.config(menu=menubar)
     
 
+    def data1(datastep1):
+        """Window2"""
+        datastep1.root = Tk()
+        menubar = Menu(datastep1.root)
+        datastep1.root.geometry("500x500")
+        datastep1.root.title('Travelling Expense')
+        
+        """Label Window2"""
+        datastep1.label = Label(datastep1.root, text = "▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀",fg="#00CCCC" \
+                              ,font=("Helvetica", 13)).pack(anchor=CENTER)
+        datastep1.label = Label(datastep1.root, text = ":.｡.✿ﾟ|͇̿T͇̿|ravelling |͇̿E͇̿|xpense✿.｡.:"\
+                              , fg="#FF6666", font=("Helvetica", 18)).pack(anchor=CENTER)
+        datastep1.label = Label(datastep1.root, text = "From Bangkok To"\
+                              , fg="#8B4513", font=("Helvetica", 13)).pack()
 
+
+        variable1 = StringVar(datastep1.root)
+        variable1.set("Provinces") # default value
+
+        
+        province = OptionMenu(datastep1.root, variable1, \
+                        "Chiangrai", "Chiangmai", "Nan", "Phayao", "Phrae", \
+                        "Maehongson", "Lampang", "Lamphun", "Uttaradit", "Kalasin", \
+                        "Khonkaen", "Chaiyaphum", "Nakhonphanom", "Nakhonratchasima", \
+                        "BuengKan", "Buriram", "Mahasarakham", "Mukdahan", "Yasothon", \
+                        "Roiet", "Loei", "Sisaket", "Sakonnakhon", "Surin", \
+                        "Nongkhai", "Nongbualamphu", "Amnatcharoen", "Udonthani", \
+                        "Ubonratchathani", "Kamphaengphet", "Chainat", "Nakhonnayok", \
+                        "Nakhonpathom", "Samutsakhon", "Singburi", "Suphanburi", \
+                        "Saraburi", "Angthong", "Nakhonsawan", "Nonthaburi", "Pathumthani", \
+                        "Phranakhonsiayutthaya", "Sukhothai", "Uthaithani", "Phichit", \
+                        "Phitsanulok", "Phetchabun", "Lopburi", "Samutprakan", "Samutsongkhram", \
+                        "Chanthaburi", "Chachoengsao", "Chonburi", "Trat", "Prachinburi", \
+                        "Rayong", "Sakaeo", "Kanchanaburi", "Tak", "Prachuapkhirikhan", \
+                        "Phetchaburi", "Ratchaburi", "Krabi", "Chumphon", "Trang", \
+                        "Nakhonsithammarat", "Narathiwat", "Pattani", "Phangnga", \
+                        "Phatthalung", "Phuket", "Yala", "Ranong", "Songkhla", \
+                        "Satun", "Suratthani").pack()
+
+
+        
+        datastep1.label = Label(datastep1.root, text = "Oil Type"\
+                              , fg="#8B4513", font=("Helvetica", 13)).pack()
+        variable2 = StringVar(datastep1.root)
+        variable2.set("Oil") # default value
+        oil = OptionMenu(datastep1.root, variable2, \
+                        "Gasohol 95-E10", "Gasohol 95-E20", "Gasohol 95-E85", "Gasohol 91-E10", "Gasoline 95", \
+                        "Diesel", "NGV", "LPG").pack()
+        
+        
+        datastep1.label = Label(datastep1.root, text = "Car Type"\
+                              , fg="#8B4513", font=("Helvetica", 13)).pack()
+        variable3 = StringVar(datastep1.root)
+        variable3.set("Car Type") # default value
+        cartype = OptionMenu(datastep1.root, variable3, \
+                        "Eco car", "Midsize car", "pickups", "Truck 6 wheel", "Truck 10 wheel", \
+                        "Motorcycles").pack()
+        def ok1():
+            print (variable1.get(),variable2.get(),variable3.get())
+            datastep1.root.quit()
+            
+        button = Button(datastep1.root, text="OK", command=ok1)
+        button.pack()
 Window()
-
-
-
-def distance(provinces):
-    """Str -> provinces program finds distance from Bangkok to  provinces."""
-    lis_provinces ={"Chiangrai":838, "Chiangmai":706, "Nan":675, "Phayao":706, "Phrae":557, \
-                    "Maehongson":936, "Lampang":613, "Lamphun":674, "Uttaradit":493, "Kalasin":543, \
-                    "Khonkaen":475, "Chaiyaphum":359, "Nakhonphanom":761, "Nakhonratchasima":283, \
-                    "BuengKan":751, "Buriram":410, "Mahasarakham":497, "Mukdahan":703, "Yasothon":555, \
-                    "Roiet":533, "Loei":558, "Sisaket":561, "Sakonnakhon":671, "Surin":457, \
-                    "Nongkhai":654, "Nongbualamphu":554, "Amnatcharoen":617, "Udonthani":601, \
-                    "Ubonratchathani":627, "Kamphaengphet":374, "Chainat":204, "Nakhonnayok":107, \
-                    "Nakhonpathom":57, "Samutsakhon":38, "Singburi":149, "Suphanburi":129, \
-                    "Saraburi":116, "Angthong":114, "Nakhonsawan":248, "Nonthaburi":30, "Pathumthani":42, \
-                    "Phranakhonsiayutthaya":78, "Sukhothai":427, "Uthaithani":222, "Phichit":349, \
-                    "Phitsanulok":379, "Phetchabun":375, "Lopburi":180, "Samutprakan":26, "Samutsongkhram":38, \
-                    "Chanthaburi":254, "Chachoengsao":85, "Chonburi":100, "Trat":322, "Prachinburi":136, \
-                    "Rayong":187, "Sakaeo":210, "Kanchanaburi":121, "Tak":426, "Prachuapkhirikhan":284, \
-                    "Phetchaburi":127, "Ratchaburi":102, "Krabi":801, "Chumphon":456, "Trang":852, \
-                    "Nakhonsithammarat":799, "Narathiwat":1135, "Pattani":1046, "Phangnga":802, \
-                    "Phatthalung":868, "Phuket":908, "Yala":1100, "Ranong":572, "Songkhla":984, \
-                    "Satun":981, "Suratthani":637}
-    for i in lis_provinces:
-        if provinces == i:
-            print lis_provinces[i]
-distance(raw_input())
-
