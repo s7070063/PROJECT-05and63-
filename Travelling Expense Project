@@ -4,12 +4,13 @@ import tkinter.messagebox
 
 class Window(object):
     def __init__(expense):
-        # Window1 #
+        """Window1"""
         expense.root = Tk()
         menubar = Menu(expense.root)
         expense.root.title("Travelling Expense")
         expense.root.geometry("360x240")
-        # Label Window1 #
+        
+        """Label Window1"""
         expense.label = Label(expense.root, text = "▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀",fg="#00CCCC" \
                               ,font=("Helvetica", 13)).pack(anchor=CENTER)
         expense.label = Label(expense.root, text = ":.｡.✿ﾟ|͇̿T͇̿|ravelling |͇̿E͇̿|xpense✿.｡.:"\
@@ -23,48 +24,53 @@ class Window(object):
                               ,font=("Helvetica", 13)).pack()
         expense.label = Label(expense.root, text = '''...........!(@)"(@)""""**!(@)(@)***!(@)""''',fg="#110000" \
                               ,font=("Helvetica", 13)).pack()
-        # Button Window1 #
+        """Button Window1"""
         expense.buttontext = IntVar()
         expense.buttontext.set("Let Go!!")
         Button(expense.root, font=("Helvetica", 12), fg="red", bg="black", textvariable=expense.buttontext, \
                command=expense.data1).place(relx=0.5, rely=0.4, anchor=CENTER)
         expense.label = Label(expense.root, text = "▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀",fg="#00CCCC" \
                               ,font=("Helvetica", 13)).pack(anchor=CENTER)
-        # Function Menu #
-        def close():
-            if tkinter.messagebox.askokcancel("Quit", "Do you really wish to quit?"):
-                expense.root.destroy()
-        def instruc():
-            """Window2"""
-            expense.root = Tk()
-            expense.root.geometry("400x130")
-            expense.root.title('Instruction')
-            label = Label(expense.root, text = ":.｡.✿Instruction✿.｡.:"\
-                              , fg="#663366", font=("Helvetica", 15)).pack(anchor=CENTER)
-            label = Label(expense.root, text = "1. Select the region to travel."\
-                              , fg="#110000", font=("Helvetica", 11)).pack(anchor=CENTER)
-            label = Label(expense.root, text = "2. Select the type of vehicle."\
-                              , fg="#110000", font=("Helvetica", 11)).pack(anchor=CENTER)
-            label = Label(expense.root, text = "3. Alternative fuel to travel."\
-                              , fg="#110000", font=("Helvetica", 11)).pack(anchor=CENTER)
-            label = Label(expense.root, text = "The program calculates the distance , fuel, energy, and cost."\
-                              , fg="#110000", font=("Helvetica", 11)).pack(anchor=CENTER)
-        def about():
-            """Window2"""
-            expense.root = Tk()
-            expense.root.geometry("300x200")
-            expense.root.title('About')
-            label = Label(expense.root, text = ":.｡.✿About✿.｡.:"\
-                              , fg="#FF3333", font=("Helvetica", 15)).pack(anchor=CENTER)
-            label = Label(expense.root, text = "The program calculates the distance, fuel, energy, and cost."\
-                              , fg="#110000", font=("Helvetica", 11)).pack(anchor=CENTER)
-            label = Label(expense.root, text = ""\
-                              , fg="#110000", font=("Helvetica", 11)).pack(anchor=CENTER)
-            label = Label(expense.root, text = ""\
-                              , fg="#110000", font=("Helvetica", 11)).pack(anchor=CENTER)
-            label = Label(expense.root, text = "Kingkran Parod 57070005 and Bencharat Rotkotn 57070063"\
-                              , fg="#110000", font=("Helvetica", 11)).pack(anchor=CENTER)
-        # Menu Bar #
+        """Menu"""
+
+    def close():
+        if tkinter.messagebox.askokcancel("Quit", "Do you really wish to quit?"):
+            expense.root.destroy()
+    def instruc():
+        """Window2"""
+        root = Tk()
+        root.geometry("400x130")
+        root.title('Instruction')
+        label = Label(root, text = ":.｡.✿Instruction✿.｡.:"\
+                      , fg="#663366", font=("Helvetica", 15)).pack(anchor=CENTER)
+        label = Label(root, text = "1. Select the region to travel."\
+                      , fg="#110000", font=("Helvetica", 11)).pack(anchor=CENTER)
+        label = Label(root, text = "2. Select the type of vehicle."\
+                      , fg="#110000", font=("Helvetica", 11)).pack(anchor=CENTER)
+        label = Label(root, text = "3. Alternative fuel to travel."\
+                      , fg="#110000", font=("Helvetica", 11)).pack(anchor=CENTER)
+        label = Label(root, text = "The program calculates the distance , fuel, energy, and cost."\
+                      , fg="#110000", font=("Helvetica", 11)).pack(anchor=CENTER)
+
+    def about():
+        """Window2"""
+        root = Tk()
+        root.geometry("300x200")
+        root.title('About')
+        label = Label(root, text = ":.｡.✿About✿.｡.:"\
+                          , fg="#FF3333", font=("Helvetica", 15)).pack(anchor=CENTER)
+        label = Label(root, text = "The program calculates the distance, fuel, energy, and cost."\
+                          , fg="#110000", font=("Helvetica", 11)).pack(anchor=CENTER)
+        label = Label(root, text = ""\
+                          , fg="#110000", font=("Helvetica", 11)).pack(anchor=CENTER)
+        label = Label(root, text = ""\
+                          , fg="#110000", font=("Helvetica", 11)).pack(anchor=CENTER)
+        label = Label(root, text = "Kingkran Parod 57070005 and Bencharat Rotkotn 57070063"\
+                          , fg="#110000", font=("Helvetica", 11)).pack(anchor=CENTER)
+
+  
+
+  
         filemenu = Menu(menubar, tearoff=0)
         filemenu.add_command(label="Exit",command=close)
         menubar.add_cascade(label="File",menu=filemenu)
@@ -73,28 +79,32 @@ class Window(object):
         helpmenu.add_command(label="Instruction",command=instruc)
         helpmenu.add_command(label="About",command=about)
         menubar.add_cascade(label="Help", menu=helpmenu)
+
         # display the menu
         expense.root.config(menu=menubar)
-    # Open Window2 #
+    
+
     def data1(datastep1):
-        # Window2 #
+        """Window2"""
         datastep1.root = Tk()
         menubar = Menu(datastep1.root)
         datastep1.root.geometry("500x500")
         datastep1.root.title('Travelling Expense')
         
-        # Label Window2 #
+        """Label Window2"""
         datastep1.label = Label(datastep1.root, text = "▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀",fg="#00CCCC" \
                               ,font=("Helvetica", 13)).pack(anchor=CENTER)
         datastep1.label = Label(datastep1.root, text = ":.｡.✿ﾟ|͇̿T͇̿|ravelling |͇̿E͇̿|xpense✿.｡.:"\
                               , fg="#FF6666", font=("Helvetica", 18)).pack(anchor=CENTER)
         datastep1.label = Label(datastep1.root, text = "From Bangkok To"\
                               , fg="#8B4513", font=("Helvetica", 13)).pack()
+
+
+        datastep1.variable1 = StringVar(datastep1.root)
+        datastep1.variable1.set("Provinces") # default value
+
         
-        # Province or end #
-        end = StringVar(datastep1.root)
-        end.set("Provinces") # default value
-        province = OptionMenu(datastep1.root, end, \
+        province = OptionMenu(datastep1.root, datastep1.variable1, \
                         "Chiangrai", "Chiangmai", "Nan", "Phayao", "Phrae", \
                         "Maehongson", "Lampang", "Lamphun", "Uttaradit", "Kalasin", \
                         "Khonkaen", "Chaiyaphum", "Nakhonphanom", "Nakhonratchasima", \
@@ -112,94 +122,106 @@ class Window(object):
                         "Nakhonsithammarat", "Narathiwat", "Pattani", "Phangnga", \
                         "Phatthalung", "Phuket", "Yala", "Ranong", "Songkhla", \
                         "Satun", "Suratthani").pack()
-        # Car Type or car #
-        datastep1.label = Label(datastep1.root, text = "Car Type"\
-                              , fg="#8B4513", font=("Helvetica", 13)).pack()
-        car = StringVar(datastep1.root)
-        car.set("Car Type") # default value
-        cartype = OptionMenu(datastep1.root, car, \
-                        'Motorcycle', 'Car', 'Pickup', 'Truck 6 wheel', 'Truck 10 wheel').pack()
+
+
         
-        # Oil Type or oil #
         datastep1.label = Label(datastep1.root, text = "Oil Type"\
                               , fg="#8B4513", font=("Helvetica", 13)).pack()
-        oil = StringVar(datastep1.root)
-        oil.set("Oil") # default value
-        oils = OptionMenu(datastep1.root, oil, \
-                        'Gasohol 95-E10', 'Gasohol 95-E20', 'Gasohol 95-E85', 'Gasohol 91-E10', \
-                        'Gasoline 95', 'Diesel', 'NGV', 'LPG').pack()
-        # OK Botton link function#
-        def ok1():
-            print (end.get(),oil.get(),car.get())
-            datastep1.root.quit()
-
-        def calculate():
-            result = ok1()
-        button = Button(datastep1.root, text="OK", command=calculate)
-        button.pack()
+        datastep1.variable2 = StringVar(datastep1.root)
+        datastep1.variable2.set("Oil") # default value
+        oil = OptionMenu(datastep1.root, datastep1.variable2, \
+                        "Gasohol 95-E10", "Gasohol 95-E20", "Gasohol 95-E85", "Gasohol 91-E10", "Gasoline 95", \
+                        "Diesel", "NGV", "LPG").pack()
         
-###Main Program#################################################################################################
-##class Travelling():
-##    '''Call input.'''
-##    def __init__(expense, end, car, oil):
-##        expense.end = end
-##        expense.car = car
-##        expense.oil = oil
-##    def pay():
-##        print ('Distance =',distance(expense.end),'km')
-##        your_car = 0
-##        if expense.oil == 'NGV' and expense.car != 'Motorcycle':
-##            your_car = 10.50
-##        elif expense.oil == 'LPG' and expense.car != 'Motorcycle':
-##            your_car = 12.50
-##        elif expense.oil in ['NGV','LPG','Diesel'] and expense.car == 'Motorcycle':
-##            your_car = '!!!Mistake!!!'
-##        else:
-##            your_car = car_use(car)
-##        print ('Car use =',your_car,'km/l')
-##        price_fuel = 0
-##        if expense.oil in ['NGV','LPG','Diesel'] and expense.car == 'Motorcycle':
-##            price_fuel = '!!!Mistake!!!'
-##        else:
-##            price_fuel = fuel_use(expense.oil)
-##        print ('Price of fuel =',price_fuel,'Bath/l')
-##        amount_used = 0
-##        if expense.oil in ['NGV','LPG','Diesel'] and expense.car == 'Motorcycle':
-##            amount_used = '!!!Mistake!!!'
-##        else:
-##            amount_used = distance(expense.end)/your_car
-##        print ('Quantity of fuel to be used =',amount_used,'liter')
-##        total = 0
-##        if expense.oil in ['NGV','LPG','Diesel'] and expense.car == 'Motorcycle':
-##            total = '!!!Mistake!!!'
-##        else:
-##            total = amount_used*price_fuel
-##        print ('The total amount =',total,'Bath')
-##    def distance(expense):
-##        lis_provinces ={"Chiangrai":838, "Chiangmai":706, "Nan":675, "Phayao":706, "Phrae":557, \
-##                                "Maehongson":936, "Lampang":613, "Lamphun":674, "Uttaradit":493, "Kalasin":543, \
-##                                "Khonkaen":475, "Chaiyaphum":359, "Nakhonphanom":761, "Nakhonratchasima":283, \
-##                                "BuengKan":751, "Buriram":410, "Mahasarakham":497, "Mukdahan":703, "Yasothon":555, \
-##                                "Roiet":533, "Loei":558, "Sisaket":561, "Sakonnakhon":671, "Surin":457, \
-##                                "Nongkhai":654, "Nongbualamphu":554, "Amnatcharoen":617, "Udonthani":601, \
-##                                "Ubonratchathani":627, "Kamphaengphet":374, "Chainat":204, "Nakhonnayok":107, \
-##                                "Nakhonpathom":57, "Samutsakhon":38, "Singburi":149, "Suphanburi":129, \
-##                                "Saraburi":116, "Angthong":114, "Nakhonsawan":248, "Nonthaburi":30, "Pathumthani":42, \
-##                                "Phranakhonsiayutthaya":78, "Sukhothai":427, "Uthaithani":222, "Phichit":349, \
-##                                "Phitsanulok":379, "Phetchabun":375, "Lopburi":180, "Samutprakan":26, "Samutsongkhram":38, \
-##                                "Chanthaburi":254, "Chachoengsao":85, "Chonburi":100, "Trat":322, "Prachinburi":136, \
-##                                "Rayong":187, "Sakaeo":210, "Kanchanaburi":121, "Tak":426, "Prachuapkhirikhan":284, \
-##                                "Phetchaburi":127, "Ratchaburi":102, "Krabi":801, "Chumphon":456, "Trang":852, \
-##                                "Nakhonsithammarat":799, "Narathiwat":1135, "Pattani":1046, "Phangnga":802, \
-##                                "Phatthalung":868, "Phuket":908, "Yala":1100, "Ranong":572, "Songkhla":984, \
-##                                "Satun":981, "Suratthani":637}
-##        return lis_provinces[province]
-##    def car_use(type_car):
-##        lis_transport = {'Motorcycle':22, 'Car':15.5, 'Pickup':11.5, 'Truck 6 wheel':10.5, 'Truck 10 wheel':9}
-##        return lis_transport[type_car]
-##    def fuel_use(type_fuel):
-##        lis_fuel = {'Gasohol 95-E10':33.70, 'Gasohol 95-E20':30.38, 'Gasohol 95-E85':22.88, 'Gasohol 91-E10':31.86, \
-##                    'Gasoline 95':40.76, 'Diesel':28.79, 'NGV':10.50, 'LPG':15.00}
-##        return lis_fuel[type_fuel]
-###Main Program#################################################################################################
+        
+        datastep1.label = Label(datastep1.root, text = "Car Type"\
+                              , fg="#8B4513", font=("Helvetica", 13)).pack()
+        datastep1.variable3 = StringVar(datastep1.root)
+        datastep1.variable3.set("Car Type") # default value
+        cartype = OptionMenu(datastep1.root, datastep1.variable3, \
+                        "Midsize car", "Pickups", "Truck 6 wheel", "Truck 10 wheel", \
+                        "Motorcycles").pack()
+            
+        button = Button(datastep1.root, text="OK", command=datastep1.ok1).pack()
+    
+    def ok1(datastep1):
+        result = Price(datastep1.variable1.get(),datastep1.variable2.get(),datastep1.variable3.get())
+        call_result1 = result.print_dist()
+        call_result2 = result.print_oil()
+        call_result3 = result.print_car()
+        call_result4 = result.print_use()
+        call_result5 = result.print_pay()
+        datastep1.dist = Label(datastep1.root, text='Distance :   '+str(call_result1)+'   km.', font='Cordia_New 15').pack()
+        datastep1.oil = Label(datastep1.root, text='Car use :   '+str(call_result2)+'   km/l.', font='Cordia_New 15').pack()
+        datastep1.car = Label(datastep1.root, text='Price of fuel :   '+str(call_result3)+'   bath/l.', font='Cordia_New 15').pack()
+        datastep1.use = Label(datastep1.root, text='Quantity of fuel to be used :   '+str(call_result4)+'   liter.', font='Cordia_New 15').pack()
+        datastep1.pay = Label(datastep1.root, text='The total amount :   '+str(call_result5)+'   bath.', font='Cordia_New 15').pack()
+class Price():
+    '''price this you pay'''
+    def __init__(self, province, oil, car):
+        self.province = province
+        self.oil = oil
+        self.car = car
+
+    def print_dist(self):
+        lis_provinces ={"Chiangrai":838, "Chiangmai":706, "Nan":675, "Phayao":706, "Phrae":557, \
+                            "Maehongson":936, "Lampang":613, "Lamphun":674, "Uttaradit":493, "Kalasin":543, \
+                            "Khonkaen":475, "Chaiyaphum":359, "Nakhonphanom":761, "Nakhonratchasima":283, \
+                            "BuengKan":751, "Buriram":410, "Mahasarakham":497, "Mukdahan":703, "Yasothon":555, \
+                            "Roiet":533, "Loei":558, "Sisaket":561, "Sakonnakhon":671, "Surin":457, \
+                            "Nongkhai":654, "Nongbualamphu":554, "Amnatcharoen":617, "Udonthani":601, \
+                            "Ubonratchathani":627, "Kamphaengphet":374, "Chainat":204, "Nakhonnayok":107, \
+                            "Nakhonpathom":57, "Samutsakhon":38, "Singburi":149, "Suphanburi":129, \
+                            "Saraburi":116, "Angthong":114, "Nakhonsawan":248, "Nonthaburi":30, "Pathumthani":42, \
+                            "Phranakhonsiayutthaya":78, "Sukhothai":427, "Uthaithani":222, "Phichit":349, \
+                            "Phitsanulok":379, "Phetchabun":375, "Lopburi":180, "Samutprakan":26, "Samutsongkhram":38, \
+                            "Chanthaburi":254, "Chachoengsao":85, "Chonburi":100, "Trat":322, "Prachinburi":136, \
+                            "Rayong":187, "Sakaeo":210, "Kanchanaburi":121, "Tak":426, "Prachuapkhirikhan":284, \
+                            "Phetchaburi":127, "Ratchaburi":102, "Krabi":801, "Chumphon":456, "Trang":852, \
+                            "Nakhonsithammarat":799, "Narathiwat":1135, "Pattani":1046, "Phangnga":802, \
+                            "Phatthalung":868, "Phuket":908, "Yala":1100, "Ranong":572, "Songkhla":984, \
+                            "Satun":981, "Suratthani":637}
+        end = lis_provinces[self.province]
+        return end
+
+    def print_oil(self):
+        lis_fuel = {'Gasohol 95-E10':33.70, 'Gasohol 95-E20':30.38, 'Gasohol 95-E85':22.88, 'Gasohol 91-E10':31.86, \
+                    'Gasoline 95':40.76, 'Diesel':28.79, 'NGV':10.50, 'LPG':15.00}
+        fuel = lis_fuel[self.oil]
+        price_fuel = 0
+        if self.oil in ['NGV','LPG','Diesel'] and self.car == 'Motorcycles':
+            price_fuel = '!!!Mistake!!!'
+        else:
+            price_fuel = fuel
+        return price_fuel
+    def print_car(self):
+        lis_transport = {'Motorcycles':22, 'Midsize car':15.5, 'Pickups':11.5, \
+                          'Truck 6 wheel':10.5, 'Truck 10 wheel':9}
+        transport = lis_transport[self.car]
+        your_car = 0
+        if self.oil == 'NGV' and self.car != 'Motorcycles':
+            your_car = 10.50
+        elif self.oil == 'LPG' and self.car != 'Motorcycles':
+            your_car = 12.50
+        elif self.oil in ['NGV','LPG','Diesel'] and self.car == 'Motorcycles':
+            your_car = '!!!Mistake!!!'
+        else:
+            your_car = transport
+        return your_car
+
+    def print_use(self):
+        amount_used = 0
+        if self.oil in ['NGV','LPG','Diesel'] and self.car == 'Motorcycles':
+            amount_used = '!!!Mistake!!!'
+        else:
+            amount_used = Price.print_dist(self)/Price.print_car(self)
+        return amount_used
+
+    def print_pay(self):
+        total = 0
+        if self.oil in ['NGV','LPG','Diesel'] and self.car == 'Motorcycles':
+            total = '!!!Mistake!!!'
+        else:
+            total = Price.print_use(self)*Price.print_oil(self)
+        return total
 Window()
