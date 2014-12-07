@@ -1,6 +1,7 @@
 """Travelling Expense"""
 from tkinter import *
 import tkinter.messagebox
+import webbrowser
 class Window(object):
     # Window1 #
     def __init__(expense):
@@ -27,7 +28,7 @@ class Window(object):
         expense.buttontext = IntVar()
         expense.buttontext.set("Let Go!!")
         Button(expense.root, font=("Helvetica", 12), fg="red", bg="black", textvariable=expense.buttontext, \
-               command=expense.data1).place(relx=0.5, rely=0.4, anchor=CENTER)
+               command=expense.data1).place(relx=0.5, rely=0.37, anchor=CENTER)
         expense.label = Label(expense.root, text = "▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀",fg="#00CCCC" \
                               ,font=("Helvetica", 13)).pack(anchor=CENTER)
         # Function Menu #
@@ -49,22 +50,17 @@ class Window(object):
                           , fg="#110000", font=("Helvetica", 11)).pack(anchor=CENTER)
             label = Label(root, text = "The program calculates the distance , fuel, energy, and cost."\
                           , fg="#110000", font=("Helvetica", 11)).pack(anchor=CENTER)
-
         def about():
             """Window2"""
             root = Tk()
-            root.geometry("300x200")
+            root.geometry("400x80")
             root.title('About')
             label = Label(root, text = ":.｡.✿About✿.｡.:"\
                               , fg="#FF3333", font=("Helvetica", 15)).pack(anchor=CENTER)
             label = Label(root, text = "The program calculates the distance, fuel, energy, and cost."\
                               , fg="#110000", font=("Helvetica", 11)).pack(anchor=CENTER)
-            label = Label(root, text = ""\
-                              , fg="#110000", font=("Helvetica", 11)).pack(anchor=CENTER)
-            label = Label(root, text = ""\
-                              , fg="#110000", font=("Helvetica", 11)).pack(anchor=CENTER)
-            label = Label(root, text = "Kingkran Parod 57070005 and Bencharat Rotkotn 57070063"\
-                              , fg="#110000", font=("Helvetica", 11)).pack(anchor=CENTER)
+            label = Label(root, text = "Kingkarn Parod 57070005 and Bencharat Rotkorn 57070063"\
+                              , fg="#110000", font=("Helvetica", 8)).pack(anchor=CENTER)
         # Menu Bar #
         filemenu = Menu(menubar, tearoff=0)
         filemenu.add_command(label="Exit",command=close)
@@ -76,13 +72,12 @@ class Window(object):
         menubar.add_cascade(label="Help", menu=helpmenu)
         # display the menu
         expense.root.config(menu=menubar)
-    
     # Open Window2 #
     def data1(datastep1):
         # Window2 #
         datastep1.root = Tk()
         menubar = Menu(datastep1.root)
-        datastep1.root.geometry("500x420")
+        datastep1.root.geometry("500x460")
         datastep1.root.title('Travelling Expense')
         # Label Window2 #
         datastep1.label = Label(datastep1.root, text = "▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀",fg="#00CCCC" \
@@ -129,9 +124,12 @@ class Window(object):
                         "Gasohol 95-E10", "Gasohol 95-E20", "Gasohol 95-E85", "Gasohol 91-E10", "Gasoline 95", \
                         "Diesel", "NGV", "LPG").pack()
         # OK Botton link function#    
-        button = Button(datastep1.root, text="OK", command=datastep1.ok1).pack()
+        button = Button(datastep1.root, text="OK",  bg="#8B658B", command=datastep1.ok1).pack()
         datastep1.label = Label(datastep1.root, text = "▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀",fg="#00CCCC" \
                               ,font=("Helvetica", 13)).pack(anchor=CENTER)
+        button = Button(datastep1.root, text="      Map      ", bg="#006666", command=datastep1.mapthai).pack()
+    def mapthai(datastep1):
+            webbrowser.open("https://www.google.co.th/maps/@13.5132381,101.0649051,6z")
     def ok1(datastep1):
         result = Price(datastep1.variable1.get(),datastep1.variable2.get(),datastep1.variable3.get())
         call_result1 = result.print_dist()
@@ -144,6 +142,8 @@ class Window(object):
         datastep1.car = Label(datastep1.root, text='Price of fuel :   '+str(call_result3)+'   bath/l.', font='Helvetica 13').pack()
         datastep1.use = Label(datastep1.root, text='Quantity of fuel to be used :   '+str(call_result4)+'   liter.', font='Helvetica 13').pack()
         datastep1.pay = Label(datastep1.root, text='The total amount :   '+str(call_result5)+'   bath.', font='Helvetica 13').pack()
+        datastep1.label = Label(datastep1.root, text = "▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀",fg="#EE6363" \
+                              ,font=("Helvetica", 13)).pack(anchor=CENTER)
 class Price():
     '''price this you pay'''
     def __init__(self, province, car, oil):
@@ -208,5 +208,4 @@ class Price():
         else:
             total = Price.print_use(self)*Price.print_oil(self)
         return total
-    
 Window()
