@@ -77,7 +77,7 @@ class Window(object):
         # Window2 #
         datastep1.root = Tk()
         menubar = Menu(datastep1.root)
-        datastep1.root.geometry("500x460")
+        datastep1.root.geometry("500x600")
         datastep1.root.title('Travelling Expense')
         # Label Window2 #
         datastep1.label = Label(datastep1.root, text = "▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀",fg="#00CCCC" \
@@ -115,6 +115,8 @@ class Window(object):
         cartype = OptionMenu(datastep1.root, datastep1.variable2, \
                         "Midsize car", "Pickups", "Truck 6 wheel", "Truck 10 wheel", \
                         "Motorcycles").pack()
+        datastep1.label = Label(datastep1.root, text = "##Motorcycles must not is 'NGV','LPG','Diesel##'",fg="#EE0000" \
+                              ,font=("Helvetica", 9)).pack(anchor=CENTER)
         # Oil Type or oil #
         datastep1.label = Label(datastep1.root, text = "Oil Type"\
                               , fg="#8B4513", font=("Helvetica", 13)).pack()
@@ -123,18 +125,36 @@ class Window(object):
         oil = OptionMenu(datastep1.root, datastep1.variable3, \
                         "Gasohol 95-E10", "Gasohol 95-E20", "Gasohol 95-E85", "Gasohol 91-E10", "Gasoline 95", \
                         "Diesel", "NGV", "LPG").pack()
+        
+        datastep1.group1 = LabelFrame(datastep1.root,padx=40,pady=5)
+        datastep1.group1.pack(padx=2,pady=2)
+        datastep1.p_oil = Label(datastep1.group1, text="Price of fuel :").pack()
+        datastep1.price = IntVar(datastep1.root)
+        Entry(datastep1.group1, textvariable = datastep1.price).pack()
+        button = Button(datastep1.group1, text="Check price", bg="#1112ff", command=datastep1.check_p).pack()
+
+
         # OK Botton link function#    
-        button = Button(datastep1.root, text="OK",  bg="#8B658B", command=datastep1.ok1).pack()
+        button = Button(datastep1.root, text="    OK    ",  bg="#8B658B", command=datastep1.ok1).pack()
+
+
         datastep1.label = Label(datastep1.root, text = "▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀",fg="#00CCCC" \
                               ,font=("Helvetica", 13)).pack(anchor=CENTER)
         button = Button(datastep1.root, text="      Map      ", bg="#006666", command=datastep1.mapthai).pack()
+
+    def check_p(datastep1):
+            webbrowser.open("http://www.eppo.go.th/retail_prices.html")
+
+
     def mapthai(datastep1):
             webbrowser.open("https://www.google.co.th/maps/@13.5132381,101.0649051,6z")
+
+
     def ok1(datastep1):
-        result = Price(datastep1.variable1.get(),datastep1.variable2.get(),datastep1.variable3.get())
+        result = Price(datastep1.variable1.get(),datastep1.variable2.get(),datastep1.variable3.get(),datastep1.price.get())
         call_result1 = result.print_dist()
-        call_result2 = result.print_oil()
-        call_result3 = result.print_car()
+        call_result2 = result.print_car()
+        call_result3 = result.print_oil()
         call_result4 = result.print_use()
         call_result5 = result.print_pay()
         datastep1.dist = Label(datastep1.root, text='Distance :   '+str(call_result1)+'   km.', font='Helvetica 13').pack()
@@ -146,10 +166,11 @@ class Window(object):
                               ,font=("Helvetica", 13)).pack(anchor=CENTER)
 class Price():
     '''price this you pay'''
-    def __init__(self, province, car, oil):
+    def __init__(self, province, car, oil, price_oil):
         self.province = province
         self.oil = oil
         self.car = car
+        self.price_oil = price_oil 
     def print_dist(self):
         lis_provinces ={"Chiangrai":838, "Chiangmai":706, "Nan":675, "Phayao":706, "Phrae":557, \
                             "Maehongson":936, "Lampang":613, "Lamphun":674, "Uttaradit":493, "Kalasin":543, \
@@ -171,14 +192,11 @@ class Price():
         end = lis_provinces[self.province]
         return end
     def print_oil(self):
-        lis_fuel = {'Gasohol 95-E10':33.70, 'Gasohol 95-E20':30.38, 'Gasohol 95-E85':22.88, 'Gasohol 91-E10':31.86, \
-                    'Gasoline 95':40.76, 'Diesel':28.79, 'NGV':10.50, 'LPG':15.00}
-        fuel = lis_fuel[self.oil]
         price_fuel = 0
         if self.oil in ['NGV','LPG','Diesel'] and self.car == 'Motorcycles':
             price_fuel = '!!!Mistake!!!'
         else:
-            price_fuel = fuel
+            price_fuel = self.price_oil
         return price_fuel
     def print_car(self):
         lis_transport = {'Motorcycles':22, 'Midsize car':15.5, 'Pickups':11.5, \
@@ -186,7 +204,7 @@ class Price():
         transport = lis_transport[self.car]
         your_car = 0
         if self.oil == 'NGV' and self.car != 'Motorcycles':
-            your_car = 10.50
+            your_car = 10.00
         elif self.oil == 'LPG' and self.car != 'Motorcycles':
             your_car = 12.50
         elif self.oil in ['NGV','LPG','Diesel'] and self.car == 'Motorcycles':
