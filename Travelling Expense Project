@@ -134,13 +134,18 @@ class Window(object):
         button = Button(datastep1.group1, text="Check price", bg="#1112ff", command=datastep1.check_p).pack()
 
 
+        button = Button(datastep1.root, text="      Map      ", bg="#006666", command=datastep1.mapthai).pack()
+        
+
         # OK Botton link function#    
         button = Button(datastep1.root, text="    OK    ",  bg="#8B658B", command=datastep1.check_input).pack()
 
 
         datastep1.label = Label(datastep1.root, text = "▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀",fg="#00CCCC" \
                               ,font=("Helvetica", 8)).pack(anchor=CENTER)
-        button = Button(datastep1.root, text="      Map      ", bg="#006666", command=datastep1.mapthai).pack()
+        
+        button = Button(datastep1.root, text="Restart", bg="red", command=datastep1.reset).pack()
+        
         datastep1.label = Label(datastep1.root, text = "▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀",fg="#00CCCC" \
                               ,font=("Helvetica", 8)).pack(anchor=CENTER)
         datastep1.label = Label(datastep1.root, text = ":.｡.✿:.｡.✿:.｡.✿:.｡.✿:.｡.✿:.｡.✿:.｡.✿:.｡.✿:.｡.✿:.｡.✿",fg="#FF6666" \
@@ -159,7 +164,12 @@ class Window(object):
             datastep1.on_data()
         else:
             datastep1.ok1()
-            
+
+    
+    def reset(datastep1):
+        datastep1.root.destroy()
+        datastep1.data1()
+        
 
     def on_data(datastep1):
         datastep1.on = Label(datastep1.root, text="Program can not calculate because your data incorrect.", font='Helvetica 13',fg="#EE0000").pack()
