@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# Open in python 2.7
 """Travelling Expense"""
 from Tkinter import *
 import webbrowser
