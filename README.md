@@ -2,8 +2,7 @@ PROJECT-05and63-
 ================
 
 Project programming PSIT
-Bencharat Rotkorn 57070063
-Kingkarn Parod 57070005
+Kingkarn Parod 57070005 and Bencharat Rotkorn 57070063
 
 Program Travelling Expense is open in python 2.7
 The program calculates the distance , fuel, energy, and cost.
