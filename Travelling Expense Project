@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """Travelling Expense"""
 from Tkinter import *
 import webbrowser
@@ -49,6 +50,7 @@ class Window(object):
             label = Label(root, text = "The program calculates the distance , fuel, energy, and cost."\
                           , fg="#110000", font=("Helvetica", 11)).pack(anchor=CENTER)
             root.mainloop()
+
         def about():
             """Window2"""
             root = Tk()
@@ -61,11 +63,13 @@ class Window(object):
             label = Label(root, text = "Kingkarn Parod 57070005 and Bencharat Rotkorn 57070063"\
                               , fg="#110000", font=("Helvetica", 8)).pack(anchor=CENTER)
             root.mainloop()
+
         # Menu Bar #
         filemenu = Menu(menubar, tearoff=0)
         filemenu.add_separator()
         filemenu.add_command(label="Exit",command=close)
         menubar.add_cascade(label="File",menu=filemenu)
+        
         helpmenu = Menu(menubar, tearoff=0)
         helpmenu.add_command(label="Instruction",command=instruc)
         helpmenu.add_separator()
@@ -127,6 +131,7 @@ class Window(object):
         oil = OptionMenu(datastep1.root, datastep1.variable3, \
                         "Gasohol 95-E10", "Gasohol 95-E20", "Gasohol 95-E85", "Gasohol 91-E10", "Gasoline 95", \
                         "Diesel", "NGV", "LPG").pack()
+        
         datastep1.group1 = LabelFrame(datastep1.root,padx=40,pady=5)
         datastep1.group1.pack(padx=2,pady=2)
         datastep1.p_oil = Label(datastep1.group1, text="Price of fuel :").pack()
@@ -134,11 +139,17 @@ class Window(object):
         Entry(datastep1.group1, textvariable = datastep1.price).pack()
         # Button Window 2 #
         button = Button(datastep1.group1, text="Check price", bg="#1112ff", command=datastep1.check_p).pack()
+
+
         # OK Botton link function #    
         button = Button(datastep1.root, text="    OK    ",  bg="#8B658B", command=datastep1.check_input).pack()
+
+
         datastep1.label = Label(datastep1.root, text = "▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀",fg="#00CCCC" \
                               ,font=("Helvetica", 8)).pack(anchor=CENTER)
+        
         button = Button(datastep1.root, text="Restart", bg="red", command=datastep1.reset).pack()
+        
         datastep1.label = Label(datastep1.root, text = "▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀",fg="#00CCCC" \
                               ,font=("Helvetica", 8)).pack(anchor=CENTER)
         datastep1.label = Label(datastep1.root, text = ":.｡.✿:.｡.✿:.｡.✿:.｡.✿:.｡.✿:.｡.✿:.｡.✿:.｡.✿:.｡.✿:.｡.✿",fg="#FF6666" \
@@ -146,14 +157,17 @@ class Window(object):
     # Small function #
     def check_p(datastep1):
             webbrowser.open("http://www.eppo.go.th/retail_prices.html")
+
     def mapthai(datastep1):
             webbrowser.open("https://www.google.co.th/maps/@13.5132381,101.0649051,6z")
+
     def check_input(datastep1):
         if datastep1.variable1.get() == "Provinces" or datastep1.variable2.get() == "Car Type" or \
                                        datastep1.variable3.get() == "Oil" or datastep1.price.get() == 0.00:
             datastep1.on_data()
         else:
             datastep1.ok1()
+
     def reset(datastep1):
         datastep1.root.destroy()
         datastep1.data1()
@@ -162,6 +176,7 @@ class Window(object):
         datastep1.on = Label(datastep1.root, text="Program can not calculate because your data incorrect.", font='Helvetica 13',fg="#EE0000").pack()
         datastep1.label = Label(datastep1.root, text = "▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀",fg="#EE6363" \
                               ,font=("Helvetica", 13)).pack(anchor=CENTER)
+
     def ok1(datastep1):
         result = Price(datastep1.variable1.get(),datastep1.variable2.get(),datastep1.variable3.get(),datastep1.price.get())
         call_result1 = result.print_dist()
@@ -178,15 +193,14 @@ class Window(object):
         datastep1.label = Label(datastep1.root, text = "▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀",fg="#EE6363" \
                               ,font=("Helvetica", 13)).pack(anchor=CENTER)
 class Price():
-    '''price this you pay'''
+    """Str -> province, cartype, oiltype and get int -> price of fuel print distance, caruse, price of fuel\
+    Quantity of fuel to be used and total amount"""
     def __init__(self, province, car, oil, price_oil):
         self.province = province
         self.oil = oil
         self.car = car
-        self.price_oil = float(price_oil) 
+        self.price_oil = float(price_oil)
     def print_dist(self):
-    """Str -> province, cartype, oiltype and get int -> price of fuel print distance, caruse, price of fuel\
-    Quantity of fuel to be used and total amount"""
         lis_provinces ={"Chiangrai":838, "Chiangmai":706, "Nan":675, "Phayao":706, "Phrae":557, \
                             "Maehongson":936, "Lampang":613, "Lamphun":674, "Uttaradit":493, "Kalasin":543, \
                             "Khonkaen":475, "Chaiyaphum":359, "Nakhonphanom":761, "Nakhonratchasima":283, \
